@@ -37,3 +37,6 @@ Overall the stock predictions performed surprisingly well. The Neural Network pr
 The Support Vector Regression model also performed exceedingly well, predicting the stock price to within a dollar based off of the prior 15 days.
 Based off of these models and the ARIMA model, which also produced quality results with a MSE of 3.694, we were able to successfully and accurately predict stock values based on prior days stock events. 
 The success of these models helps explain the success and rise of algo-trading, which is currently used to make numerous small profitable trades in the stock market. The primary difference between our models and algo-trader's is that our models used daily data, while algo-traders use a live stream of current data.
+
+##### Note
+*All the figures attached here provides visualization for the Stock Data till May 8th, 2020. The curves may vary for others as they may implement the models for another timestamp.*
