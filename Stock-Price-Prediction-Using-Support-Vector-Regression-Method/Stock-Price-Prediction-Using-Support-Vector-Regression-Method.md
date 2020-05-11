@@ -17,14 +17,14 @@ import pandas as pd
 
 
 ```python
-#First of all I am fetching Data from Alpha Vantage API,
-# I am fetching Stock data for Adobe since last 20years to till date.
+# First of all I am fetching Data from Alpha Vantage API,
+# I am fetching Stock data for Microsoft since last 20years to till date.
 ```
 
 
 ```python
-# Collecting stock data of Adobe using Alpha Vantage API
-CSV_URL ="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=ADBE&apikey=NR8HXOOB06DUO2M3&datatype=csv&outputsize=full"
+# Collecting stock data of Microsoft using Alpha Vantage API
+CSV_URL ="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=NR8HXOOB06DUO2M3&datatype=csv&outputsize=full"
 with requests.Session() as s:
     download = s.get(CSV_URL)
     print(download)
@@ -36,7 +36,7 @@ df
 new_header = df.iloc[0] #grab the first row for the header
 df = df[1:] #take the data less the header row
 df.columns = new_header
-df
+df.head()
 ```
 
     <Response [200]>
@@ -74,113 +74,58 @@ df
   <tbody>
     <tr>
       <th>1</th>
-      <td>2020-04-27</td>
-      <td>348.8000</td>
-      <td>349.9600</td>
-      <td>345.1200</td>
-      <td>348.5000</td>
-      <td>2361714</td>
+      <td>2020-05-08</td>
+      <td>184.9797</td>
+      <td>185.0000</td>
+      <td>183.3600</td>
+      <td>184.6800</td>
+      <td>30912638</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-04-24</td>
-      <td>338.0000</td>
-      <td>344.7000</td>
-      <td>333.5011</td>
-      <td>344.1000</td>
-      <td>2146162</td>
+      <td>2020-05-07</td>
+      <td>184.1700</td>
+      <td>184.5500</td>
+      <td>182.5800</td>
+      <td>183.6000</td>
+      <td>28315992</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-04-23</td>
-      <td>338.9000</td>
-      <td>341.7500</td>
-      <td>334.8000</td>
-      <td>335.3700</td>
-      <td>2120251</td>
+      <td>2020-05-06</td>
+      <td>182.0800</td>
+      <td>184.2000</td>
+      <td>181.6306</td>
+      <td>182.5400</td>
+      <td>32139299</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-04-22</td>
-      <td>337.4100</td>
-      <td>339.3800</td>
-      <td>332.8006</td>
-      <td>336.7700</td>
-      <td>2231819</td>
+      <td>2020-05-05</td>
+      <td>180.6200</td>
+      <td>183.6500</td>
+      <td>179.9000</td>
+      <td>180.7600</td>
+      <td>36839168</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2020-04-21</td>
-      <td>340.9000</td>
-      <td>342.7630</td>
-      <td>325.2100</td>
-      <td>328.9900</td>
-      <td>3548202</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>5028</th>
-      <td>2000-05-02</td>
-      <td>128.6000</td>
-      <td>128.8000</td>
-      <td>115.3000</td>
-      <td>115.5000</td>
-      <td>1736700</td>
-    </tr>
-    <tr>
-      <th>5029</th>
-      <td>2000-05-01</td>
-      <td>122.2000</td>
-      <td>131.0000</td>
-      <td>122.1000</td>
-      <td>130.7000</td>
-      <td>2012300</td>
-    </tr>
-    <tr>
-      <th>5030</th>
-      <td>2000-04-28</td>
-      <td>124.8000</td>
-      <td>127.9000</td>
-      <td>118.0000</td>
-      <td>120.9000</td>
-      <td>2832200</td>
-    </tr>
-    <tr>
-      <th>5031</th>
-      <td>2000-04-27</td>
-      <td>108.1000</td>
-      <td>124.5000</td>
-      <td>107.0000</td>
-      <td>123.4000</td>
-      <td>2784800</td>
-    </tr>
-    <tr>
-      <th>5032</th>
-      <td>2000-04-26</td>
-      <td>118.6000</td>
-      <td>120.8000</td>
-      <td>112.3000</td>
-      <td>114.9000</td>
-      <td>2502200</td>
+      <td>2020-05-04</td>
+      <td>174.4900</td>
+      <td>179.0000</td>
+      <td>173.8000</td>
+      <td>178.8400</td>
+      <td>30372862</td>
     </tr>
   </tbody>
 </table>
-<p>5032 rows × 6 columns</p>
 </div>
 
 
 
 
 ```python
-# Once the data is collected I am applying Data Preprocession methods to clean data.
+# Once the data is collected I am applying Data Preprocessing methods to clean data.
 # Data Type of the columns
 dataTypeOfColumns = df.dtypes
 print(dataTypeOfColumns)
@@ -256,7 +201,7 @@ df.dtypes
 # By taking average of the high and low value I am calculating a mid or 
 # average value of the stock for a particular day
 df['average_value'] = df[['high', 'low']].mean(axis=1)
-df
+df.head(10)
 ```
 
 
@@ -292,117 +237,106 @@ df
   <tbody>
     <tr>
       <th>1</th>
-      <td>2020-04-27</td>
-      <td>348.80</td>
-      <td>349.960</td>
-      <td>345.1200</td>
-      <td>348.50</td>
-      <td>2361714</td>
-      <td>347.54000</td>
+      <td>2020-05-08</td>
+      <td>184.9797</td>
+      <td>185.00</td>
+      <td>183.3600</td>
+      <td>184.68</td>
+      <td>30912638</td>
+      <td>184.1800</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-04-24</td>
-      <td>338.00</td>
-      <td>344.700</td>
-      <td>333.5011</td>
-      <td>344.10</td>
-      <td>2146162</td>
-      <td>339.10055</td>
+      <td>2020-05-07</td>
+      <td>184.1700</td>
+      <td>184.55</td>
+      <td>182.5800</td>
+      <td>183.60</td>
+      <td>28315992</td>
+      <td>183.5650</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-04-23</td>
-      <td>338.90</td>
-      <td>341.750</td>
-      <td>334.8000</td>
-      <td>335.37</td>
-      <td>2120251</td>
-      <td>338.27500</td>
+      <td>2020-05-06</td>
+      <td>182.0800</td>
+      <td>184.20</td>
+      <td>181.6306</td>
+      <td>182.54</td>
+      <td>32139299</td>
+      <td>182.9153</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-04-22</td>
-      <td>337.41</td>
-      <td>339.380</td>
-      <td>332.8006</td>
-      <td>336.77</td>
-      <td>2231819</td>
-      <td>336.09030</td>
+      <td>2020-05-05</td>
+      <td>180.6200</td>
+      <td>183.65</td>
+      <td>179.9000</td>
+      <td>180.76</td>
+      <td>36839168</td>
+      <td>181.7750</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2020-04-21</td>
-      <td>340.90</td>
-      <td>342.763</td>
-      <td>325.2100</td>
-      <td>328.99</td>
-      <td>3548202</td>
-      <td>333.98650</td>
+      <td>2020-05-04</td>
+      <td>174.4900</td>
+      <td>179.00</td>
+      <td>173.8000</td>
+      <td>178.84</td>
+      <td>30372862</td>
+      <td>176.4000</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <th>6</th>
+      <td>2020-05-01</td>
+      <td>175.8000</td>
+      <td>178.64</td>
+      <td>174.0100</td>
+      <td>174.57</td>
+      <td>39370474</td>
+      <td>176.3250</td>
     </tr>
     <tr>
-      <th>5028</th>
-      <td>2000-05-02</td>
-      <td>128.60</td>
-      <td>128.800</td>
-      <td>115.3000</td>
-      <td>115.50</td>
-      <td>1736700</td>
-      <td>122.05000</td>
+      <th>7</th>
+      <td>2020-04-30</td>
+      <td>180.0000</td>
+      <td>180.40</td>
+      <td>176.2300</td>
+      <td>179.21</td>
+      <td>53875857</td>
+      <td>178.3150</td>
     </tr>
     <tr>
-      <th>5029</th>
-      <td>2000-05-01</td>
-      <td>122.20</td>
-      <td>131.000</td>
-      <td>122.1000</td>
-      <td>130.70</td>
-      <td>2012300</td>
-      <td>126.55000</td>
+      <th>8</th>
+      <td>2020-04-29</td>
+      <td>173.2200</td>
+      <td>177.68</td>
+      <td>171.8800</td>
+      <td>177.43</td>
+      <td>51286559</td>
+      <td>174.7800</td>
     </tr>
     <tr>
-      <th>5030</th>
-      <td>2000-04-28</td>
-      <td>124.80</td>
-      <td>127.900</td>
-      <td>118.0000</td>
-      <td>120.90</td>
-      <td>2832200</td>
-      <td>122.95000</td>
+      <th>9</th>
+      <td>2020-04-28</td>
+      <td>175.4556</td>
+      <td>175.67</td>
+      <td>169.3900</td>
+      <td>169.81</td>
+      <td>34392694</td>
+      <td>172.5300</td>
     </tr>
     <tr>
-      <th>5031</th>
-      <td>2000-04-27</td>
-      <td>108.10</td>
-      <td>124.500</td>
-      <td>107.0000</td>
-      <td>123.40</td>
-      <td>2784800</td>
-      <td>115.75000</td>
-    </tr>
-    <tr>
-      <th>5032</th>
-      <td>2000-04-26</td>
-      <td>118.60</td>
-      <td>120.800</td>
-      <td>112.3000</td>
-      <td>114.90</td>
-      <td>2502200</td>
-      <td>116.55000</td>
+      <th>10</th>
+      <td>2020-04-27</td>
+      <td>176.5900</td>
+      <td>176.90</td>
+      <td>173.3000</td>
+      <td>174.05</td>
+      <td>33194384</td>
+      <td>175.1000</td>
     </tr>
   </tbody>
 </table>
-<p>5032 rows × 7 columns</p>
 </div>
 
 
@@ -412,6 +346,7 @@ df
 # Rearranging Columns
 column_titles = ['timestamp','open','high','average_value','low','close','volume']
 df.reindex(columns = column_titles)
+df.head()
 ```
 
 
@@ -438,136 +373,233 @@ df.reindex(columns = column_titles)
       <th>timestamp</th>
       <th>open</th>
       <th>high</th>
-      <th>average_value</th>
       <th>low</th>
       <th>close</th>
       <th>volume</th>
+      <th>average_value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>1</th>
-      <td>2020-04-27</td>
-      <td>348.80</td>
-      <td>349.960</td>
-      <td>347.54000</td>
-      <td>345.1200</td>
-      <td>348.50</td>
-      <td>2361714</td>
+      <td>2020-05-08</td>
+      <td>184.9797</td>
+      <td>185.00</td>
+      <td>183.3600</td>
+      <td>184.68</td>
+      <td>30912638</td>
+      <td>184.1800</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-04-24</td>
-      <td>338.00</td>
-      <td>344.700</td>
-      <td>339.10055</td>
-      <td>333.5011</td>
-      <td>344.10</td>
-      <td>2146162</td>
+      <td>2020-05-07</td>
+      <td>184.1700</td>
+      <td>184.55</td>
+      <td>182.5800</td>
+      <td>183.60</td>
+      <td>28315992</td>
+      <td>183.5650</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-04-23</td>
-      <td>338.90</td>
-      <td>341.750</td>
-      <td>338.27500</td>
-      <td>334.8000</td>
-      <td>335.37</td>
-      <td>2120251</td>
+      <td>2020-05-06</td>
+      <td>182.0800</td>
+      <td>184.20</td>
+      <td>181.6306</td>
+      <td>182.54</td>
+      <td>32139299</td>
+      <td>182.9153</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-04-22</td>
-      <td>337.41</td>
-      <td>339.380</td>
-      <td>336.09030</td>
-      <td>332.8006</td>
-      <td>336.77</td>
-      <td>2231819</td>
+      <td>2020-05-05</td>
+      <td>180.6200</td>
+      <td>183.65</td>
+      <td>179.9000</td>
+      <td>180.76</td>
+      <td>36839168</td>
+      <td>181.7750</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2020-04-21</td>
-      <td>340.90</td>
-      <td>342.763</td>
-      <td>333.98650</td>
-      <td>325.2100</td>
-      <td>328.99</td>
-      <td>3548202</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>5028</th>
-      <td>2000-05-02</td>
-      <td>128.60</td>
-      <td>128.800</td>
-      <td>122.05000</td>
-      <td>115.3000</td>
-      <td>115.50</td>
-      <td>1736700</td>
-    </tr>
-    <tr>
-      <th>5029</th>
-      <td>2000-05-01</td>
-      <td>122.20</td>
-      <td>131.000</td>
-      <td>126.55000</td>
-      <td>122.1000</td>
-      <td>130.70</td>
-      <td>2012300</td>
-    </tr>
-    <tr>
-      <th>5030</th>
-      <td>2000-04-28</td>
-      <td>124.80</td>
-      <td>127.900</td>
-      <td>122.95000</td>
-      <td>118.0000</td>
-      <td>120.90</td>
-      <td>2832200</td>
-    </tr>
-    <tr>
-      <th>5031</th>
-      <td>2000-04-27</td>
-      <td>108.10</td>
-      <td>124.500</td>
-      <td>115.75000</td>
-      <td>107.0000</td>
-      <td>123.40</td>
-      <td>2784800</td>
-    </tr>
-    <tr>
-      <th>5032</th>
-      <td>2000-04-26</td>
-      <td>118.60</td>
-      <td>120.800</td>
-      <td>116.55000</td>
-      <td>112.3000</td>
-      <td>114.90</td>
-      <td>2502200</td>
+      <td>2020-05-04</td>
+      <td>174.4900</td>
+      <td>179.00</td>
+      <td>173.8000</td>
+      <td>178.84</td>
+      <td>30372862</td>
+      <td>176.4000</td>
     </tr>
   </tbody>
 </table>
-<p>5032 rows × 7 columns</p>
 </div>
 
 
 
 
 ```python
+# sort by date
+df_new = df.copy()
+df_new = df_new.sort_values('timestamp')
+
+# fix the date 
+df_new.reset_index(inplace=True)
+df_new.set_index("timestamp", inplace=True)
+
+df_new.tail()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>average_value</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-05-04</th>
+      <td>5</td>
+      <td>174.4900</td>
+      <td>179.00</td>
+      <td>173.8000</td>
+      <td>178.84</td>
+      <td>30372862</td>
+      <td>176.4000</td>
+    </tr>
+    <tr>
+      <th>2020-05-05</th>
+      <td>4</td>
+      <td>180.6200</td>
+      <td>183.65</td>
+      <td>179.9000</td>
+      <td>180.76</td>
+      <td>36839168</td>
+      <td>181.7750</td>
+    </tr>
+    <tr>
+      <th>2020-05-06</th>
+      <td>3</td>
+      <td>182.0800</td>
+      <td>184.20</td>
+      <td>181.6306</td>
+      <td>182.54</td>
+      <td>32139299</td>
+      <td>182.9153</td>
+    </tr>
+    <tr>
+      <th>2020-05-07</th>
+      <td>2</td>
+      <td>184.1700</td>
+      <td>184.55</td>
+      <td>182.5800</td>
+      <td>183.60</td>
+      <td>28315992</td>
+      <td>183.5650</td>
+    </tr>
+    <tr>
+      <th>2020-05-08</th>
+      <td>1</td>
+      <td>184.9797</td>
+      <td>185.00</td>
+      <td>183.3600</td>
+      <td>184.68</td>
+      <td>30912638</td>
+      <td>184.1800</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Visualizing the training stock data:
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+plt.figure(figsize = (12,6))
+plt.plot(df_new["close"])
+plt.xlabel('timestamp',fontsize=15)
+plt.ylabel('Adjusted Close Price',fontsize=15)
+plt.show()
+
+
+# Rolling mean
+close_px = df_new['close']
+mavg = close_px.rolling(window=100).mean()
+
+plt.figure(figsize = (12,6))
+close_px.plot(label='MSFT')
+mavg.plot(label='mavg')
+plt.xlabel('timestamp')
+plt.ylabel('Price')
+plt.legend()
+```
+
+    /usr/local/lib/python3.7/site-packages/pandas/plotting/_converter.py:129: FutureWarning: Using an implicitly registered datetime converter for a matplotlib plotting method. The converter was registered by pandas on import. Future versions of pandas will require you to explicitly register matplotlib converters.
+    
+    To register the converters:
+    	>>> from pandas.plotting import register_matplotlib_converters
+    	>>> register_matplotlib_converters()
+      warnings.warn(msg, FutureWarning)
+
+
+
+![png](output_11_1.png)
+
+
+
+
+
+    <matplotlib.legend.Legend at 0x11383e9d0>
+
+
+
+
+![png](output_11_3.png)
+
+
+
+```python
 # Plotting curve TimeStamp v/s Volume
 import matplotlib.pyplot as plt
-
-df_updated = df.head(20)
+%matplotlib inline
+df_updated = df.head(30)
 df_updated.plot(kind='line',x = "timestamp",y = "volume")
 plt.title('Timestamp v/s Volume curve')
 plt.xlabel('TIMESTAMP')
@@ -576,7 +608,7 @@ plt.show()
 ```
 
 
-![png](output_10_0.png)
+![png](output_12_0.png)
 
 
 
@@ -595,14 +627,14 @@ plt.show()
 ```
 
 
-![png](output_11_0.png)
+![png](output_13_0.png)
 
 
 
 ```python
 # Plotting curve TimeStamp v/s Close Value
-# Here I am updating df_updated by collecting data of the recent 14 days.
-df_updated = df.head(14)
+# Here I am updating df_updated by collecting data of the recent 15 days.
+df_updated = df.head(15)
 df_updated.plot(kind='line',x = "timestamp",y = "close")
 plt.title('Timestamp v/s close')
 plt.xlabel('TIMESTAMP')
@@ -611,7 +643,7 @@ plt.show()
 ```
 
 
-![png](output_12_0.png)
+![png](output_14_0.png)
 
 
 
@@ -634,11 +666,11 @@ def get_data(df):
 dates, prices = get_data(df_updated)
 ```
 
-    /usr/local/lib/python3.7/site-packages/pandas/core/generic.py:5303: SettingWithCopyWarning: 
+    /usr/local/lib/python3.7/site-packages/pandas/core/generic.py:5096: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     
-    See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
       self[name] = value
 
 
@@ -674,16 +706,16 @@ def predict_prices(dates, prices, x):
 
 
 ```python
-# Predicted Price for the date 27th April
-predicted_price = predict_prices(dates, prices, [27])
+# Predicted Price for the date 8th May
+predicted_price = predict_prices(dates, prices, [8])
 print(predicted_price)
 ```
 
 
-![png](output_16_0.png)
+![png](output_18_0.png)
 
 
-    (348.4001955092228, 348.60000000012303, 349.9899665829195)
+    (184.58033125415622, 179.67947368419476, 178.7048106878189)
 
 
 
@@ -692,7 +724,7 @@ predicted_price = list(predicted_price)
 print(predicted_price)
 ```
 
-    [348.4001955092228, 348.60000000012303, 349.9899665829195]
+    [184.58033125415622, 179.67947368419476, 178.7048106878189]
 
 
 
@@ -722,11 +754,11 @@ rmse = sqrt(mse)
 print("Root Mean Square Error value: ", rmse)
 ```
 
-    Actual Value:  348.5
-    Predicted value from Radical Basic Model:  348.4001955092228
-    Predicted value from Linear Regression Model:  348.60000000012303
-    Predicted value from Polynomial Model:  349.9899665829195
-    Root Mean Square Error value:  0.1000000001230319
+    Actual Value:  184.68
+    Predicted value from Radical Basic Model:  184.58033125415622
+    Predicted value from Linear Regression Model:  179.67947368419476
+    Predicted value from Polynomial Model:  178.7048106878189
+    Root Mean Square Error value:  5.000526315805246
 
 
 
