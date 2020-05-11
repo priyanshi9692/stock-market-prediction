@@ -9,24 +9,24 @@ We use Jupyter Notebook to implement the mentioned models on Stock Market Data.
 
 ## Importing Dependencies
 We imported some modules prior to the implementation, those are,
-1. Pandas python library,
-2. NumPy python library,
-3. Matplotlib python library to plot curves and
-4. Requests has been installed to GET data from Alpha Vantage API or Yahoo Finance API.
-5. SKlearn libraries for the implementation of models etc.
+1. **Pandas** python library,
+2. **NumPy** python library,
+3. **Matplotlib** python library to plot curves and
+4. **Requests** has been installed to GET data from Alpha Vantage API or Yahoo Finance API.
+5. **SKlearn libraries** for the implementation of models etc.
 
 ## Getting the Data
 The data for all the implementations is fetched directly from online sources like, Alpha Vantage APIs, Yahoo Finance etc. Jupyter Notebook is used to fetch data directly from these sources. 
 
 ## Running the Models
 The project is built in components. Every component has implementation code for Stock data Analysis. So each component can be run individually to test a different model. All the models were built and run on jupyter notebooks, so they can be run by downloading and running the jupyter notebooks.
-1. Akshata Deo implemented Neural Network Analysis. [GitHub](https://github.com/priyanshi9692/stock-market-prediction/blob/master/NeuralNet_using_TF.ipynb)
+1. **Akshata Deo** implemented Neural Network Analysis. [Neural Network Analysis](https://github.com/priyanshi9692/stock-market-prediction/blob/master/NeuralNet_using_TF.ipynb)
 
-2. Charlie Brayton implemented Naive-Bayes model. [GitHub](https://github.com/priyanshi9692/stock-market-prediction/blob/master/Naive_Bayes_Stock_Prediction.ipynb)
+2. **Charlie Brayton** implemented Naive-Bayes model. [Naive-Bayes Model](https://github.com/priyanshi9692/stock-market-prediction/blob/master/Naive_Bayes_Stock_Prediction.ipynb)
 
-3. Dikshita Borkakati implemented ARIMA model. [GitHub](https://github.com/priyanshi9692/stock-market-prediction/blob/master/Stock_Prediction_ARIMA_final.ipynb)
+3. **Dikshita Borkakati** implemented ARIMA model. [ARIMA Model](https://github.com/priyanshi9692/stock-market-prediction/blob/master/Stock_Prediction_ARIMA_final.ipynb)
 
-4. Priyanshi Jajoo implemented SVR models, Linear Regression, Polynomial and Radical Basic Function. [GitHub]()
+4. **Priyanshi Jajoo** implemented SVR models, Linear Regression, Polynomial and Radical Basic Function. [Support Vector Regression Model](https://github.com/priyanshi9692/stock-market-prediction/blob/master/Stock-Price-Prediction-Using-Support-Vector-Regression-Method/Stock-Price-Prediction-Using-Support-Vector-Regression-Method.ipynb)
 
 ## Comparing Models
 Overall the stock predictions performed surprisingly well. The Neural Network prediction especially performed incredibly well with a MSE of 0.00012404985. Given this level of accuracy, future extensions of the project could test this model with stocks from other companies to help further validate the model and ensure it isn't over fitting.
