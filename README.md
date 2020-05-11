@@ -8,7 +8,3 @@ The project is built in components, so each component can be run separately to t
 ### Getting the Data
 
 The data for all the initial implementations is pulled directly from online sources by the jupyter notebooks.
-
-### Comparing Models
-
-The initial implementations don't all use the same stock ticker, so the comparisions between models are unreliable for now. The accuracy or error of a model derived from its test and train data samples is still meaningful.
