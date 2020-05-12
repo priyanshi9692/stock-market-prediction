@@ -4,17 +4,20 @@ The stock market is one of the most complicated and lucrative businesses. Predic
 2. Time series analysis using ARIMA
 3. Support Vector Regression models: Linear Regression, Polynomial and Radical Basic Function models
 4. Naive-Bayes clustering model
+
 ## Environment
 We use **Jupyter Notebook** to implement the mentioned models on Stock Market Data. 
 
 ## Importing Dependencies
 We imported some modules prior to the implementation, those are,
+```
 1. Pandas python library,
 2. NumPy python library,
 3. Matplotlib python library to plot curves and
 4. Requests has been installed to GET data from Alpha Vantage API or Yahoo Finance API.
 5. SKlearn libraries for the implementation of models etc.
 
+```
 ## Getting the Data
 The data for all the implementations is fetched directly from online sources like, *Alpha Vantage APIs*, *Yahoo Finance*, etc. Jupyter Notebook is used to fetch data directly from these sources. 
 
@@ -38,5 +41,32 @@ The Support Vector Regression model also performed exceedingly well, predicting 
 Based off of these models and the ARIMA model, which also produced quality results with a MSE of 3.694, we were able to successfully and accurately predict stock values based on prior days stock events. 
 The success of these models helps explain the success and rise of algo-trading, which is currently used to make numerous small profitable trades in the stock market. The primary difference between our models and algo-trader's is that our models used daily data, while algo-traders use a live stream of current data.
 
-##### Important Note
+## Authors
+```
+Akshata Deo
+Department of Computer Engineering
+San Jose State University,
+San Jose, USA
+akshata.deo@sjsu.edu
+
+Charlie Brayton
+Department of Computer Engineering
+San Jose State University,
+San Jose, USA
+charles.brayton@sjsu.edu
+
+Dikshita Borkakati
+Department of Computer Engineering
+San Jose State University,
+San Jose, USA
+dikshita.borkakati@sjsu.edu
+
+Priyanshi Jajoo
+Department of Software Engineering
+San Jose State University,
+San Jose, USA
+priyanshi.jajoo@sjsu.edu
+
+```
+### Important Note
 *All the figures attached here provides visualization for the Stock Data till May 8th, 2020. The curves may vary for others as they may implement the models for another timestamp.*
